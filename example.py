@@ -1,4 +1,4 @@
-#Basic Usage Example
+# Basic Usage Example
 
 from gpio_pedal import PedalController
 
