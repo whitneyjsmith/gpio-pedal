@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gpio-pedal"  # must be unique on PyPI
+version = "0.0.1"
+description = "A short description of your package"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {file = "LICENSE"}
+authors = [
+  {name="Whitney Smith"},
+]
+dependencies = [
+  # "requests>=2.31.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/whitneyjsmith/gpio-pedal"
+Bug Tracker = "https://github.com/whitneyjsmith/gpio-pedal/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
