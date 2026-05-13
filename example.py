@@ -1,16 +1,31 @@
-# Basic Usage Example
+"""
+gpio-pedal example — Python API usage.
 
-from gpio_pedal import PedalController
+Wire normally-open switches between each GPIO pin and GND.
+The internal pull-up resistor is enabled automatically.
 
-# Define switch-to-key mappings
-pedal_config = {
-    17: "space",   # GPIO 17 triggers Spacebar
-    22: "ctrl+c",  # GPIO 22 triggers Ctrl+C
-    27: "m",       # GPIO 27 triggers "M" key
+Run this script on your Raspberry Pi:
+    python example.py
+"""
+
+from gpio_pedal import PedalController, load_config
+from gpio_pedal.utils import describe_config
+
+# ── Option 1: define the config inline ───────────────────────────────────────
+
+config = {
+    17: "space",    # GPIO 17 (pin 11) → Spacebar
+    22: "ctrl+c",   # GPIO 22 (pin 15) → Ctrl+C
+    27: "m",        # GPIO 27 (pin 13) → M key
 }
 
-# Initialize the pedal controller
-pedal = PedalController(config=pedal_config)
+# ── Option 2: load from a JSON file ──────────────────────────────────────────
+# config = load_config("config.json")
 
-# Start listening for footswitch presses
+# Preview what's mapped before starting
+print(describe_config(config))
+print()
+
+# Start the controller — blocks until Ctrl+C
+pedal = PedalController(config=config, bouncetime=300)
 pedal.run()

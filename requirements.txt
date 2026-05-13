@@ -1,0 +1,12 @@
+# Runtime dependencies (also declared in pyproject.toml)
+RPi.GPIO>=0.7.1
+pynput>=1.7.0
+
+# Optional: YAML config file support
+# PyYAML>=6.0
+
+# Dev / test dependencies
+pytest>=7.0
+pytest-cov>=4.0
+build>=1.0
+twine>=4.0
