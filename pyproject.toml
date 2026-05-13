@@ -3,22 +3,52 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "gpio-pedal"  # must be unique on PyPI
-version = "0.0.1"
-description = "A short description of your package"
+name = "gpio-pedal"
+version = "0.1.0"
+description = "Map Raspberry Pi GPIO pins to keyboard shortcuts — turn any foot pedal or button into a keystroke"
 readme = "README.md"
 requires-python = ">=3.9"
 license = {file = "LICENSE"}
 authors = [
-  {name="Whitney Smith"},
+  {name = "Whitney Smith", email = "whitnaaays@gmail.com"},
+]
+keywords = ["raspberry-pi", "gpio", "pedal", "footswitch", "keyboard", "automation", "accessibility"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Intended Audience :: End Users/Desktop",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Home Automation",
+  "Topic :: System :: Hardware",
 ]
 dependencies = [
-  # "requests>=2.31.0",
+  "RPi.GPIO>=0.7.1",
+  "pynput>=1.7.0",
 ]
+
+[project.optional-dependencies]
+yaml = ["PyYAML>=6.0"]
+dev = [
+  "pytest>=7.0",
+  "pytest-cov>=4.0",
+  "build>=1.0",
+  "twine>=4.0",
+]
+
+[project.scripts]
+gpio-pedal = "gpio_pedal.cli:main"
 
 [project.urls]
 Homepage = "https://github.com/whitneyjsmith/gpio-pedal"
-Bug Tracker = "https://github.com/whitneyjsmith/gpio-pedal/issues"
+"Bug Tracker" = "https://github.com/whitneyjsmith/gpio-pedal/issues"
+Repository = "https://github.com/whitneyjsmith/gpio-pedal"
 
 [tool.setuptools.packages.find]
-where = ["src"]
+where = ["."]
+include = ["gpio_pedal*"]
